@@ -1,0 +1,16 @@
+name: xdg-portal-test
+version: 0.1.0
+
+authors:
+  - Evangelos Paterakis <evan@geopjr.dev>
+
+targets:
+  xdg-portal-test:
+    main: src/xdg-portal-test.cr
+
+dependencies:
+  gtk4:
+    github: hugopl/gtk4.cr
+    branch: master
+
+crystal: 1.7.3

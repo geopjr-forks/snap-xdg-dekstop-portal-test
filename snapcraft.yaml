@@ -1,0 +1,26 @@
+name: xdgportaltest
+base: core22
+version: "1"
+summary: xdg desktop portal test
+description: xdg desktop portal test
+
+grade: devel
+confinement: strict
+compression: lzo
+
+slots:
+  xdgportaltest:
+    interface: dbus
+    bus: session
+    name: dev.geopjr.xdgportaltest
+
+apps:
+  xdgportaltest:
+    command: xdg-portal-test
+    extensions: [gnome]
+    plugs:
+      - desktop
+parts:
+  xdgportaltest:
+    plugin: dump
+    source: ./bin/

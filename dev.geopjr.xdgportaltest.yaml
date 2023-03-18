@@ -1,0 +1,35 @@
+app-id: dev.geopjr.xdgportaltest
+runtime: org.gnome.Platform
+runtime-version: '43'
+sdk: org.gnome.Sdk
+command: xdgportaltest
+finish-args:
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --share=ipc
+  - --device=dri
+
+cleanup:
+  - /include
+  - /lib/pkgconfig
+  - /share/doc
+  - /share/man
+  - '*.a'
+  - '*.la'
+
+modules:
+  - name: livevent
+    sources:
+      - type: git
+        url: https://github.com/libevent/libevent.git
+        tag: release-2.1.12-stable
+  - name: xdgportaltest
+    buildsystem: simple
+    build-commands:
+      - install -D -m 0755 xdg-portal-test /app/bin/xdgportaltest
+    sources:
+      - type: dir
+        path: ./bin/
+        skip:
+          - compare-api
+          - gi-crystal
